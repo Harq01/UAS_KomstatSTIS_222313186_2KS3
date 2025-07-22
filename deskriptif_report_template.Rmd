@@ -1,0 +1,43 @@
+---
+title: "Laporan Statistik Deskriptif"
+author: "Dashboard Analisis Statistik"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+header-includes:
+  - \usepackage{booktabs}
+params:
+  descriptive_stats_object: NULL
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(dplyr)
+library(knitr)
+```
+
+```{r}
+if (!is.null(params$descriptive_stats_object)) {
+  
+  skim_df <- as.data.frame(params$descriptive_stats_object)
+  
+  skim_df %>%
+    select(
+      `Tipe Data` = skim_type,
+      Variabel = skim_variable,
+      `Data Hilang` = n_missing,
+      `Rata-Rata` = numeric.mean,
+      `Standar Deviasi` = numeric.sd,
+      Minimum = numeric.p0,
+      Median = numeric.p50,
+      Maksimum = numeric.p100
+    ) %>%
+    kable(
+      booktabs = TRUE,
+      caption = "Tabel Statistik Deskriptif",
+      digits = 2, 
+      align = 'l' 
+    )
+}
+```

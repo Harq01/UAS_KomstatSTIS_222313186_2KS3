@@ -1,0 +1,44 @@
+---
+title: "Laporan Uji Proporsi dan Varians"
+author: "Dashboard Analisis Statistik"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+params:
+  prop_one_output: "Uji belum dijalankan."
+  prop_one_interp: ""
+  var_one_output: "Uji belum dijalankan."
+  var_one_interp: ""
+  var_two_output: "Uji belum dijalankan."
+  var_two_interp: ""
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+cat(paste0("```\n", params$prop_one_output, "\n```"))
+```
+
+```{r}
+cat(params$prop_one_interp)
+```
+
+```{r}
+cat(paste0("```\n", params$var_one_output, "\n```"))
+```
+
+```{r}
+cat(params$var_one_interp)
+```
+
+```{r}
+cat(paste0("```\n", params$var_two_output, "\n```"))
+```
+
+```{r}
+cat(params$var_two_interp)
+```
+

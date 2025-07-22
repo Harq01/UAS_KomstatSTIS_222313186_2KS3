@@ -1,0 +1,33 @@
+---
+title: "Laporan Uji Beda Rata-Rata"
+author: "Dashboard Analisis Statistik"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  pdf_document:
+    latex_engine: xelatex
+params:
+  t_one_output: "Uji belum dijalankan."
+  t_one_interp: ""
+  t_two_output: "Uji belum dijalankan."
+  t_two_interp: ""
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+cat(paste0("```\n", params$t_one_output, "\n```"))
+```
+
+```{r}
+cat(params$t_one_interp)
+```
+
+```{r}
+cat(paste0("```\n", params$t_two_output, "\n```"))
+```
+
+```{r}
+cat(params$t_two_interp)
+```

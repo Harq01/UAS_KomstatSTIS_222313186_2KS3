@@ -1,0 +1,13 @@
+name: UAS_KOMSTAT_222313186
+title: UAS_KOMSTAT_222313186
+username: mfaruqhafdizullah
+account: mfaruqhafdizullah
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 15099338
+bundleId: 10657950
+url: https://mfaruqhafdizullah.shinyapps.io/UAS_KOMSTAT_222313186/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Pakta Integritas UAS Komputasi Statistik.docx|peta/all_kabkota_ind.geojson|peta/kab 37.geojson|peta/sovi_data.geojson

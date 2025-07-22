@@ -1,0 +1,44 @@
+---
+title: "Interpretasi Proses Kategorisasi Data"
+author: "Dashboard Analisis Statistik"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: pdf_document
+params:
+  params_history: list()
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(dplyr)
+```
+
+```{r interpretation_ouput, results='asis'}
+history <- params$params_history
+
+for (item_params in history) {
+  
+  var_name <- item_params$var_name_param
+  num_bins <- item_params$num_bins_param
+  user_breaks <- item_params$user_breaks_param
+  user_labels <- item_params$user_labels_param
+  min_val <- item_params$min_val_param
+  max_val <- item_params$max_val_param
+
+  cat(paste0("### Interpretasi Proses Kategorisasi (", format(Sys.time(), '%Y-%m-%d %H:%M:%S'), ")\n\n"))
+  cat(paste0("Kategorisasi berhasil! Variabel **", var_name, "** telah dibagi menjadi ", num_bins, " kelompok.\n\n"))
+  cat(paste0("Tabel data kini memiliki kolom baru bernama **Kategori_", var_name, "**.\n\n"))
+  cat("Kategorisasi ini dilakukan berdasarkan batas interval dan nama yang Anda tentukan:\n\n")
+  
+  all_breaks <- c(min_val, user_breaks, max_val)
+  
+  for (i in 1:num_bins) {
+    lower_bound <- round(all_breaks[i], 2)
+    upper_bound <- round(all_breaks[i+1], 2)
+    interval_str <- if (i == 1) paste0("[", lower_bound, " - ", upper_bound, "]") else paste0("(", lower_bound, " - ", upper_bound, "]")
+    
+    cat(paste0("* **", user_labels[i], "**: ", interval_str, "\n"))
+  }
+  
+  cat("\n\n---\n\n")
+}
+```
